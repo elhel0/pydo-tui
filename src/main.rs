@@ -291,6 +291,7 @@ fn render_pydo<'a>(pydo: &'a json::JsonValue, selected: usize, position: usize, 
 
 fn try_get_pydo() -> (json::JsonValue, bool) {
     let fp = get_path();
+    pydors::parse(vec!["".to_string()]);
     if Path::new(&fp).exists() {
         let contents = fs::read_to_string(&fp).unwrap();
         return (json::parse(&contents).unwrap(), true);
